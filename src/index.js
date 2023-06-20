@@ -7,6 +7,7 @@ import dotenv from "dotenv";
 import userRoutes from "./routes/user.route.js";
 import noteRoutes from "./routes/note.route.js";
 import testRoutes from "./routes/test.route.js";
+import authRoutes from "./routes/auth.route.js"
 
 // env variables
 dotenv.config();
@@ -25,6 +26,7 @@ connect();
 app.use("/api", userRoutes);
 app.use("/api", noteRoutes);
 app.use("/api", testRoutes);
+app.use("/api", authRoutes);
 
 // si
 const server = app.listen(3000, () => {

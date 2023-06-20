@@ -2,17 +2,15 @@ import mongoose from "mongoose";
 import { Schema, model } from "mongoose";
 
 const TestSchema = new Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+  email: {
+    type: String,
+    required: true,
   },
   answers: {
-    type: [Number],
-    required: true,
+    type: [Number]
   },
   score: {
-    type: Number,
-    required: true,
+    type: Number
   },
   createdAt: {
     type: Date,

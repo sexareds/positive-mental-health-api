@@ -1,4 +1,5 @@
-import User from '../models/User';
+import User from '../models/User.js';
+import bcrypt from 'bcrypt';
 
 // Login
 export const login = async (req, res, next) => {
@@ -35,7 +36,7 @@ export const login = async (req, res, next) => {
 
 // Signup
 export const signup = async (req, res, next) => {
-  const { body: { name, email, password, gender, ethnicity, region, education, institution } } = req;
+  const { body: { name, email, password, gender, ethnicity, region, education, institution, role } } = req;
 
   try {
     const existingUser = await User.findOne({ email });
@@ -55,6 +56,7 @@ export const signup = async (req, res, next) => {
       region,
       education,
       institution,
+      role
     });
 
     const savedUser = await user.save();

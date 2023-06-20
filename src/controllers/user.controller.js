@@ -25,8 +25,9 @@ export const getUsers = async (req, res) => {
 
 // Obtiene un usuario por su _id
 export const getUser = async (req, res) => {
+  const {email} = req.params;
   try {
-    const user = await User.findById(req.params.id);
+    const user = await User.findOne(email);
     if (!user) {
       return res.status(404).json({
         success: false,

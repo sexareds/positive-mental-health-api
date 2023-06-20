@@ -23,28 +23,25 @@ const UserSchema = new Schema({
   },
   gender: {
     type: String,
-    required: true,
-    enum: ["Masculino", "Femenino", "Otro"],
+    required: true
   },
   ethnicity: {
-    type: String,
-    required: true,
-    enum: ["Mestizo", "Blanco", "Afrodescendiente", "Indígena", "Otro"]
+    type: String
   },
   region: {
     type: String,
-    required: true,
-    enum: ["Costa", "Sierra", "Oriente", "Galápagos"]
+    required: true
   },
   education: {
-    type: String,
-    required: true,
-    enum: ["10mo BGU", "1ro bachillerato", "2do de bachillerato", "2ro de bachillerato"]
+    type: String
   },
   institution: {
+    type: String
+  },
+  role: {
     type: String,
     required: true,
-    enum: ["Privado", "Fiscomisional", "Municipal"]
+    enum: ["U", "P", "A"]
   },
   createdAt: {
     type: Date,
