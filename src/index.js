@@ -3,8 +3,10 @@ import cors from "cors";
 import connect from "./database.js";
 import dotenv from "dotenv";
 
-// routes
+// importing routes
 import userRoutes from "./routes/user.route.js";
+import noteRoutes from "./routes/note.route.js";
+import testRoutes from "./routes/test.route.js";
 
 // env variables
 dotenv.config();
@@ -21,6 +23,8 @@ connect();
 
 // routes
 app.use("/api", userRoutes);
+app.use("/api", noteRoutes);
+app.use("/api", testRoutes);
 
 // si
 const server = app.listen(3000, () => {
