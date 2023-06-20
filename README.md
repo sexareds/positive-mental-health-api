@@ -6,3 +6,8 @@ To install all dependencies
 ```javascript
 npm install
 ```
+
+To run the program
+```javascript
+npm run dev
+```
