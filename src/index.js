@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import connect from "./database.js";
+import connect from "./database/database.js";
 import dotenv from "dotenv";
 
 // importing routes
