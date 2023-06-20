@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import { Schema, model } from "mongoose";
 
 const TestSchema = new Schema({
@@ -7,6 +8,10 @@ const TestSchema = new Schema({
   },
   answers: {
     type: [Number],
+    required: true,
+  },
+  score: {
+    type: Number,
     required: true,
   },
   createdAt: {
