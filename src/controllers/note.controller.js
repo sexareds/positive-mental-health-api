@@ -18,27 +18,28 @@ export const getNotesByUser = (req, res, next) => {
 };
 
 // Crear nota
-export const createNote = (req, res, next) => {
-  const { user } = req;
-  const { title, content } = req.body;
+export const createNote = async (req, res, next) => {
+  const { email, emotion, content } = req.body;
 
-  const newNote = new Note({
-    user,
-    title,
-    content,
-  });
+  try {
+    const newNote = new Note({
+      email,
+      emotion,
+      content
+    });
 
-  newNote.save((err, note) => {
-    if (err) {
-      return next(err);
-    }
+    const savedNote = await newNote.save();
+
     res.status(201).json({
       success: true,
       message: 'Nota creada con éxito',
-      note,
+      note: savedNote,
     });
-  });
+  } catch (err) {
+    next(err);
+  }
 };
+
 
 // Eliminar una nota por id
 export const deleteNote = (req, res, next) => {

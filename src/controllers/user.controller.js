@@ -25,9 +25,11 @@ export const getUsers = async (req, res) => {
 
 // Obtiene un usuario por su _id
 export const getUser = async (req, res) => {
-  const {email} = req.params;
+  const { email } = req.params;
+  console.log(email);
   try {
-    const user = await User.findOne(email);
+    const user = await User.findOne({ email }); // Corrección aquí
+    console.log(user);
     if (!user) {
       return res.status(404).json({
         success: false,
@@ -45,6 +47,7 @@ export const getUser = async (req, res) => {
     });
   }
 };
+
 
 // Crea un nuevo usuario
 export const createUser = async (req, res) => {
@@ -78,6 +81,36 @@ export const createUser = async (req, res) => {
     res.status(500).json({ mensaje: 'Error al crear el usuario' });
   }
 };
+
+export const createPsychologist = async (req, res) => {
+  const { name, email, password, gender, region} = req.body;
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  }
+
+  try {
+    const newUser = new User({
+      name,
+      email,
+      password,
+      gender,
+      region,
+      role : "P"
+    });
+
+    newUser.password = newUser.encrypPassword(newUser.password);
+    newUser.createdAt = new Date();
+
+    await newUser.save();
+
+    res.status(201).json({ user: newUser });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ mensaje: 'Error al crear el usuario' });
+  }
+};
+  
 
 // Actualiza un usuario por su _id
 export const updateUser = async (req, res) => {
@@ -125,14 +158,16 @@ export const updateUser = async (req, res) => {
 
 // Elimina un usuario por su _id
 export const deleteUser = async (req, res) => {
+  const { email } = req.params;
   try {
-    console.log(id)
-    const user = await User.findById(req.params.id);
+    console.log(email);
+    const user = await User.findOne({ email });
+    console.log(user);
 
     if (!user) {
       return res.status(404).json({ message: 'Usuario no encontrado' });
     }
-    await user.remove();
+    await user.deleteOne();
 
     return res.status(200).json({ message: 'Usuario eliminado correctamente' });
   } catch (error) {
