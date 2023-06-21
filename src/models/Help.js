@@ -1,25 +1,22 @@
 import mongoose from "mongoose";
 import { Schema, model } from "mongoose";
 
-const NoteSchema = new Schema({
+const HelpSchema = new Schema({
   email: {
     type: String,
     required: true,
   },
-  title: {
-    type: String,
-    min: 0,
-    max: 255,
-  },
-  content: {
-    type: String,
-  },
-  createdAt: {
+  dateTime: {
     type: Date,
+    required: true,
     default: Date.now,
   },
+  selfSteemLevel: {
+    type: Number,
+    required: true,
+},
 }, {
   timestamps: true
 });
 
-export default model("Note", NoteSchema);
+export default model("Help", HelpSchema);

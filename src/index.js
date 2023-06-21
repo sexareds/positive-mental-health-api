@@ -8,6 +8,7 @@ import authRoutes from "./routes/auth.route.js";
 import userRoutes from "./routes/user.route.js";
 import noteRoutes from "./routes/note.route.js";
 import testRoutes from "./routes/test.route.js";
+import helpRoutes from "./routes/help.route.js";
 
 // env variables
 dotenv.config();
@@ -27,6 +28,7 @@ app.use("/api", authRoutes);
 app.use("/api", userRoutes);
 app.use("/api", noteRoutes);
 app.use("/api", testRoutes);
+app.use("/api", helpRoutes);
 
 // si
 const server = app.listen(3000, () => {
