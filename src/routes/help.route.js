@@ -4,9 +4,20 @@ import {getHelps, createHelp, deleteHelp, getHelpInfo} from "../controllers/help
 const router = Router();
 
 router
-    .get("/help", getHelps)
-    .post("/help", createHelp)
-    .delete("/help/:helpId", deleteHelp)
-    .get("/help/helpInfo/:helpId", getHelpInfo);
+  .get("/help", getHelps)
+  .post("/help", createHelp)
+  .delete("/help/:helpId", deleteHelp)
+  .get("/help/helpInfo/:helpId", getHelpInfo);
 
 export default router;
+
+// {
+//   "name": "César Rojas",
+//   "email": "sexareds@gmail.com",
+//   "password": "1234567890",
+//   "gender": "Masculino",
+//   "ethnicity": "Mestizo",
+//   "region": "Costa",
+//   "education": "1ro bachillerato",
+//   "institution": "Privado"
+// }
