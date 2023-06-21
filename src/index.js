@@ -4,10 +4,10 @@ import connect from "./database/database.js";
 import dotenv from "dotenv";
 
 // importing routes
+import authRoutes from "./routes/auth.route.js";
 import userRoutes from "./routes/user.route.js";
 import noteRoutes from "./routes/note.route.js";
 import testRoutes from "./routes/test.route.js";
-import authRoutes from "./routes/auth.route.js"
 
 // env variables
 dotenv.config();
@@ -23,10 +23,10 @@ app.use(express.json());
 connect();
 
 // routes
+app.use("/api", authRoutes);
 app.use("/api", userRoutes);
 app.use("/api", noteRoutes);
 app.use("/api", testRoutes);
-app.use("/api", authRoutes);
 
 // si
 const server = app.listen(3000, () => {

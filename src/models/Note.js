@@ -8,13 +8,11 @@ const NoteSchema = new Schema({
   },
   title: {
     type: String,
-    required: true,
     min: 0,
     max: 255,
   },
   content: {
     type: String,
-    required: true,
   },
   createdAt: {
     type: Date,

@@ -3,9 +3,10 @@ import { createTest, getTestById, getTestsPerUser, updateQuestionScore } from ".
 
 const router = Router();
 
-router.post("/test", createTest);
-router.put("/test/:id", updateQuestionScore)
-router.get("/test/:id", getTestById)
-router.get("/testPerUser/:email", getTestsPerUser)
+router
+	.post("/test", createTest)
+	.put("/test/:id", updateQuestionScore)
+	.get("/test/:id", getTestById)
+	.get("/testPerUser/:email", getTestsPerUser);
 
 export default router;
