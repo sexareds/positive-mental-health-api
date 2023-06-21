@@ -6,17 +6,19 @@ const NoteSchema = new Schema({
     type: String,
     required: true,
   },
-  title: {
+  dateTime: {
+    type: Date,
+    required: true,
+    default: Date.now,
+  },
+  emotion: {
     type: String,
-    min: 0,
-    max: 255,
+    required: true,
+    enum: ["Muy feliz", "Contento", "Animado", "Tranquilo", "Preocupado", "Enojado", "Triste", "Decepcionado"],	
   },
   content: {
     type: String,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
+    required: true,
   },
 }, {
   timestamps: true
