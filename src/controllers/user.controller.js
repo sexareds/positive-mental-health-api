@@ -51,7 +51,8 @@ export const getUser = async (req, res) => {
 
 // Crea un nuevo usuario
 export const createUser = async (req, res) => {
-  const { name, email, password, gender, ethnicity, region, education, institution } = req.body;
+  const { name, email, password, birthdate, gender, ethnicity, region, education, institution } = req.body;
+  console.log(birthdate);
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -63,12 +64,35 @@ export const createUser = async (req, res) => {
       name,
       email,
       password,
+      birthdate,
       gender,
       ethnicity,
       region,
       education,
       institution
     });
+
+    newUser.password = newUser.encrypPassword(newUser.password);
+    newUser.createdAt = new Date();
+
+    await newUser.save();
+
+    res.status(201).json({ user: newUser });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ mensaje: 'Error al crear el usuario' });
+  }
+};
+
+export const createAdmin = async (req, res) => {
+  const {name, email, password, role} = req.body;
+  try{
+    const newUser = new User({
+      name,
+      email,
+      password,
+      role
+    })
 
     newUser.password = newUser.encrypPassword(newUser.password);
     newUser.createdAt = new Date();

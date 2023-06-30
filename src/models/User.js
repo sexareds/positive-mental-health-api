@@ -21,16 +21,17 @@ const UserSchema = new Schema({
     min: 8,
     max: 1024,
   },
+  birthdate: {
+    type: String
+  },
   gender: {
-    type: String,
-    required: true
+    type: String
   },
   ethnicity: {
     type: String
   },
   region: {
-    type: String,
-    required: true
+    type: String
   },
   education: {
     type: String

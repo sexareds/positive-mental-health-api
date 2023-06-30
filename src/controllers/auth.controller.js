@@ -36,7 +36,7 @@ export const login = async (req, res, next) => {
 
 // Signup
 export const signup = async (req, res, next) => {
-  const { body: { name, email, password, gender, ethnicity, region, education, institution, role } } = req;
+  const { body: { name, email, password, birthdate, gender, ethnicity, region, education, institution, role } } = req;
 
   try {
     const existingUser = await User.findOne({ email });
@@ -51,6 +51,7 @@ export const signup = async (req, res, next) => {
       name,
       email,
       password: bcrypt.hashSync(password, bcrypt.genSaltSync(10)),
+      birthdate,
       gender,
       ethnicity,
       region,
