@@ -38,6 +38,7 @@ export const getHelpInfo = async (req, res) => {
       name: user.name,
       email: user.email,
       gender: user.gender,
+      birthdate: user.birthdate,
       ethnicity: user.ethnicity,
       region: user.region,
       education: user.education,

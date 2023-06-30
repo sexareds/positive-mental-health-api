@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getUsers, getUser, createUser, updateUser, deleteUser, createPsychologist } from "../controllers/user.controller.js";
+import { getUsers, getUser, createUser, updateUser, deleteUser, createPsychologist, createAdmin } from "../controllers/user.controller.js";
 
 const router = Router();
 
@@ -9,6 +9,7 @@ router
   .post("/users", createUser)
   .put("/users/:id", updateUser)
   .delete("/users/:email", deleteUser)
-  .post("/users/psychologist", createPsychologist);
+  .post("/users/psychologist", createPsychologist)
+  .post("/users/admin", createAdmin);
 
 export default router;
